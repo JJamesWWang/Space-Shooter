@@ -6,7 +6,6 @@ const Enemy: PackedScene = preload("res://src/Enemy.tscn")
 onready var spawn_points: Node2D = $SpawnPoints
 
 
-
 func _on_Timer_timeout() -> void:
 	spawn_enemy()
 
