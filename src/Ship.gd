@@ -19,9 +19,9 @@ func _exit_tree() -> void:
 
 func _process(delta: float) -> void:
 	if Input.is_action_pressed("ui_up"):
-		position.y += -SPEED * delta
+		position.y = max(0, position.y + -SPEED * delta)
 	if Input.is_action_pressed("ui_down"):
-		position.y += SPEED * delta
+		position.y = min(180, position.y + SPEED * delta)
 	if Input.is_action_just_pressed("ui_accept"):
 		fire_laser()
 
