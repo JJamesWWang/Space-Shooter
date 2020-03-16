@@ -6,6 +6,12 @@ const ExplosionEffect = preload("res://src/ExplosionEffect.tscn")
 export var SPEED: int = 20
 export var ARMOR: int = 3
 
+signal exited_screen
+
+func _ready() -> void:
+	var root: Node = get_tree().current_scene
+	connect("exited_screen", root, "_on_Enemy_exited_screen")
+
 
 func _on_body_entered(body: Node) -> void:
 	body.create_hit_effect()
@@ -18,6 +24,8 @@ func _on_body_entered(body: Node) -> void:
 
 
 func _on_VisibilityNotifier2D_screen_exited() -> void:
+	if ARMOR > 0:
+		emit_signal("exited_screen")
 	queue_free()
 
 
